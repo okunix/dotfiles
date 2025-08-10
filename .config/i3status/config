@@ -50,7 +50,7 @@ load {
 }
 
 memory {
-        format = "%used"
+        format = "M: %used"
 }
 
 tztime local {

@@ -213,7 +213,7 @@ bar {
         background         $back
         statusline         $white
         focused_statusline $white
-        focused_separator  $grey
+        focused_separator  $lightgrey
 
         # target           border       bg          text
         focused_workspace  $back        $back       $white
