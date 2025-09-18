@@ -182,7 +182,7 @@ focus_wrapping no
 #
 # colorscheme configuration 
 #
-set_from_resource $back       i3wm.background #1a1b26
+set_from_resource $back       i3wm.background #171822
 set_from_resource $overlay0   i3wm.overlay0   #202020
 set_from_resource $black      i3wm.black      #414868
 set_from_resource $text       i3wm.text       #c0caf5
