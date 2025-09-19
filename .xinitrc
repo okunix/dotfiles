@@ -13,5 +13,4 @@ while true; do
 	"$HOME/.local/scripts/dwmstatus.sh"
 	sleep 5
 done &
-picom &
 exec dwm
