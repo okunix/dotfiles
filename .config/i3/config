@@ -208,9 +208,9 @@ client.background        $back
 bar {
     status_command i3status
     position top 
-    font pango:JetBrainsMono Nerd Font 10
+    font pango:JetBrainsMono Nerd Font 10 
 
-    i3bar_command i3bar
+    i3bar_command "i3bar --transparency"
     tray_output none
     colors {
         background         $back

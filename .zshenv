@@ -13,6 +13,11 @@ export PATH="$PATH:$HOME/.local/scripts"
 # go install binaries
 export PATH="$PATH:$HOME/.go/bin"
 
+NEOVIM_MASON_BIN="$HOME/.local/share/nvim/mason/bin"
+if [ -d "$NEOVIM_MASON_BIN" ]; then
+    export PATH="$PATH:$NEOVIM_MASON_BIN"
+fi
+
 # For JAVA
 export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 export PATH="$PATH:$JAVA_HOME/bin"
