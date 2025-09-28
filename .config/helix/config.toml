@@ -3,6 +3,8 @@ theme = "custom"
 [editor]
 line-number = "relative"
 bufferline = "multiple"
+completion-timeout = 5
+completion-trigger-len = 1
 
 [editor.cursor-shape]
 insert = "bar"

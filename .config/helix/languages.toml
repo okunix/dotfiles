@@ -15,10 +15,8 @@ shebangs = ["sh", "bash"]
 
 [[language]]
 name = "ansible"
-scope = "scope.yaml"
-language-servers = ["ansible-language-server"]
+scope = "source.yaml"
+language-servers = ["ansible-language-server", "yaml-language-server"]
 file-types=[
   {glob = "ansible/**/*.{yaml,yaml}"},
-  {glob = "playbooks/**/*.{yaml,yml}"},
-  {glob = "roles/**/*.{yaml,yml}"},
 ]
