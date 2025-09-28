@@ -1,4 +1,4 @@
-theme = "tokyonight_custom"
+theme = "custom"
 
 [editor]
 line-number = "relative"
@@ -14,3 +14,7 @@ hidden = false
 esc = ["collapse_selection", "keep_primary_selection"]
 g = { c = "code_action" }
 K = "hover"
+space = { f = { f = "file_picker" }, p = { v = "file_picker" } }
+
+[keys.insert]
+esc = ["collapse_selection", "normal_mode", "move_char_left"]
