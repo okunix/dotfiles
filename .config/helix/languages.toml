@@ -6,4 +6,19 @@ args = ["--stdio"]
 name = "python"
 language-servers = ["pyright"]
 file-types = ["py"]
+shebangs = ["python", "python3"]
 scope = "source.python"
+
+[[language]]
+name = "bash"
+shebangs = ["sh", "bash"]
+
+[[language]]
+name = "ansible"
+scope = "scope.yaml"
+language-servers = ["ansible-language-server"]
+file-types=[
+  {glob = "ansible/**/*.{yaml,yaml}"},
+  {glob = "playbooks/**/*.{yaml,yml}"},
+  {glob = "roles/**/*.{yaml,yml}"},
+]
