@@ -198,7 +198,7 @@ set_from_resource $blue       i3wm.blue       #8db0ff
 set_from_resource $cyan       i3wm.cyan       #a4daff
 
 # target                 title     bg    text   indicator  border
-client.focused           $blue     $back $white $blue      $blue
+client.focused           $white    $back $white $white     $white
 client.focused_inactive  $grey     $back $white $grey      $grey
 client.unfocused         $grey     $back $white $grey      $grey
 client.urgent            $red      $back $white $red       $red
