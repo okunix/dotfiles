@@ -1,0 +1,26 @@
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"lua_ls",
+		"rust_analyzer",
+		"terraformls",
+		"yamlls",
+		"sqlls",
+		"pyright",
+		"buf_ls",
+		"marksman",
+		"eslint",
+		"html",
+		"gopls",
+		"dockerls",
+		"docker_compose_language_service",
+		"cssls",
+		"bashls",
+		"awk_ls",
+		"ansiblels",
+		"jinja_lsp",
+		"clangd",
+	},
+	automatic_enable = {
+		exclude = { "lua_ls", "yamlls", "clangd" },
+	},
+})

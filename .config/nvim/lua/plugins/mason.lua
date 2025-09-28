@@ -17,7 +17,8 @@ return {
 					},
 				},
 			})
-			require("custom.plugins.mason_lsp")
+			require("custom.plugins.mason")
+			require("custom.plugins.LSP")
 		end,
 	},
 }
