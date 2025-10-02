@@ -7,8 +7,9 @@ vim.filetype.add({
 		[".gitlab-ci.yml"] = "yaml.gitlab",
 	},
 	pattern = {
-		[".*/ansible/.*%.yaml"] = "yaml.ansible",
-		[".*/ansible/.*%.yml"] = "yaml.ansible",
+		[".*/ansible/.*%.ya?ml"] = "yaml.ansible",
+		[".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/roles/.*%.ya?ml"] = "yaml.ansible",
 	},
 })
 
