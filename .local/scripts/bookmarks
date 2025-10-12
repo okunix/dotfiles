@@ -3,13 +3,13 @@ set -e
 set -o pipefail
 bookmarks_file="$HOME/.local/share/bookmarks"
 if ! [ -f "$bookmarks_file" ]; then
-    echo "file ${bookmarks_file} not found" >&2
-    exit 1
+	echo "file ${bookmarks_file} not found" >&2
+	exit 1
 fi
 
 if [ "$1" == "edit" ]; then
-    "$EDITOR" "$bookmarks_file"
-    exit 0
+	"$EDITOR" "$bookmarks_file"
+	exit 0
 fi
 
 # shellcheck disable=SC2016
@@ -32,8 +32,11 @@ print_addr=$(printf "%s\n%s" "$get_title" 'get_title() == choice { print $NF }')
 
 choice="$(awk "$print_titles" "$bookmarks_file" | dmenu -i -l 15 -p "Bookmarks")"
 addr="$(awk -v choice="$choice" "$print_addr" "$bookmarks_file")"
+if [[ -z "$addr" ]]; then
+	addr="$(printf "https://%s" "$choice")"
+fi
 if [ "$1" == "-" ] || [ -z "$BROWSER" ]; then
-    echo "$addr" | xclip -selection clipboard
-    exit 0
+	echo "$addr" | xclip -selection clipboard
+	exit 0
 fi
 "$BROWSER" "$addr"
