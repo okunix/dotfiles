@@ -179,6 +179,13 @@ for_window [title="File Operation Progress"] floating enable
 # disable focus wrapping
 focus_wrapping no
 
+# setting window gaps 
+gaps inner 9
+gaps outer 9
+
+# starting picom compositor
+exec --no-startup-id picom -b
+
 #
 # colorscheme configuration 
 #
