@@ -1,15 +1,29 @@
 vim.filetype.add({
 	extension = {
 		tf = "terraform",
+	},
+})
+
+vim.filetype.add({
+	extension = {
 		j2 = "jinja",
 	},
-	filename = {
-		[".gitlab-ci.yml"] = "yaml.gitlab",
-	},
+})
+
+vim.filetype.add({
 	pattern = {
 		[".*/ansible/.*%.ya?ml"] = "yaml.ansible",
 		[".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
 		[".*/roles/.*%.ya?ml"] = "yaml.ansible",
+	},
+})
+
+vim.filetype.add({
+	filename = {
+		[".gitlab-ci.yml"] = "yaml.gitlab",
+	},
+	pattern = {
+		[".*%.gitlab-ci/.*%.ya?ml"] = "yaml.gitlab",
 	},
 })
 

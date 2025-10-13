@@ -21,6 +21,6 @@ require("mason-lspconfig").setup({
 		"clangd",
 	},
 	automatic_enable = {
-		exclude = { "lua_ls", "yamlls", "clangd" },
+		exclude = { "lua_ls", "clangd" },
 	},
 })
