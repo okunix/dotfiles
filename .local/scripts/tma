@@ -3,17 +3,11 @@
 set -o errexit
 set -o pipefail
 
-attach_session() {
-	local sessions_raw
-	sessions_raw="$(tmux ls -F \#S 2>/dev/null || true)"
-	if [[ -z "$sessions_raw" ]]; then
-		echo "No active tmux sessions"
-		exit 1
-	fi
-	IFS=$'\n' mapfile -t sessions <<<"$sessions_raw"
-	local session
-	session="$(gum choose --header "Choose what tmux session attach to" "${sessions[@]}")"
-	tmux attach -t "$session"
-}
-
-attach_session
+sessions_raw="$(tmux ls -F \#S 2>/dev/null || true)"
+if [[ -z "$sessions_raw" ]]; then
+	echo "No active tmux sessions"
+	exit 1
+fi
+IFS=$'\n' mapfile -t sessions <<<"$sessions_raw"
+session="$(gum choose --header "Choose what tmux session attach to" "${sessions[@]}")"
+tmux attach -t "$session"
