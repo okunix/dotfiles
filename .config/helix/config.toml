@@ -5,6 +5,7 @@ line-number = "relative"
 bufferline = "multiple"
 completion-timeout = 5
 completion-trigger-len = 1
+scrolloff = 8
 
 [editor.cursor-shape]
 insert = "bar"
