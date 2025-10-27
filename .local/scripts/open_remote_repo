@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+origin=$(git -C "${1:-"$PWD"}" remote get-url origin)
+
+if [[ $origin =~ ^git@ ]]; then
+	origin=$(sed -E -e 's/:/\//' -e 's/^git@/https:\/\//' -e 's/\.git$//' <<<"$origin")
+fi
+
+"${BROWSER:-"xdg-open"}" "$origin"
