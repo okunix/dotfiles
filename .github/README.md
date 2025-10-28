@@ -8,16 +8,13 @@
 
 ```bash
 # basic packages
-sudo pacman -S zsh alacritty neovim stow brightnessctl alsa-utils fastfetch ly tmux fzf bat tealdeer sxhkd
+sudo pacman -S zsh alacritty neovim stow brightnessctl alsa-utils fastfetch ly tmux fzf bat sxhkd
 
 # enable ly login manager
 sudo systemctl enable ly
 
 # i3 dependencies
-sudo pacman -S i3-wm dmenu polybar picom xorg-xinput xautolock xorg-xauth nitrogen flameshot slock
-
-# i also have a dwm build
-git clone github.com/yosa12978/dwm.git ~/.local/src/dwm
+sudo pacman -S i3-wm dmenu picom xorg-xinput xss-lock xorg-xauth nitrogen flameshot slock
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

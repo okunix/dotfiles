@@ -123,10 +123,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# gaps
-gaps inner 0 
-gaps outer 0 
-
 # border width
 default_border pixel 0
 
