@@ -8,13 +8,13 @@ if [[ "$1" == "edit" ]]; then
 	exit
 fi
 
-valid_bookmarks=$(grep -oE '^.+\shttps?://\S+$' "$BOOKMARKS_FILE")
+valid_bookmarks=$(grep -oE '^.+\shttps?://\S+\s*$' "$BOOKMARKS_FILE")
 names=$(sed -E 's/\shttps?:\/\/([^\/]+).*$/ (\1)/' <<<"$valid_bookmarks" | sed -E 's/www\.(.+\))$/\1/')
 choice=$(echo "$names" | dmenu -i -l 15 -p "Bookmarks")
 [[ -z "$choice" ]] && exit
-
-website_name=$(sed -E 's/\s\(.+\)$//' <<<"$choice")
-link=$(grep -E "^$website_name" "$BOOKMARKS_FILE" | sed -E 's/.+\s(\S+)$/\1/')
+#shellcheck disable=2016
+website_name=$(sed -E 's/\s\([^()]+\)$//' <<<"$choice" | sed -E 's/([+?|^$\\().*{}])/\\\1/g')
+link=$(grep -E "^$website_name" "$BOOKMARKS_FILE" | head -1 | sed -E -e 's/^\s+|\s+$//' -e 's/.+\s(\S+)$/\1/')
 [[ $? -eq 1 ]] && exit 1
 
 "${BROWSER:-"xdg-open"}" "$link" &>/dev/null
