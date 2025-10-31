@@ -14,7 +14,7 @@ choice=$(echo "$names" | dmenu -i -l 15 -p "Bookmarks")
 [[ -z "$choice" ]] && exit
 
 website_name=$(sed -E 's/\s\([^()]+\)$//' <<<"$choice" | sed -E 's/([+?|^$\\().*{}])/\\\1/g')
-link=$(grep -E "^$website_name" "$BOOKMARKS_FILE" | head -1 | sed -E -e 's/^\s+|\s+$//' -e 's/.+\s(\S+)$/\1/')
+link=$(grep -E "^$website_name\shttps?://\S+\s*$" "$BOOKMARKS_FILE" | head -1 | sed -E -e 's/^\s+|\s+$//' -e 's/.+\s(\S+)$/\1/')
 [[ $? -eq 1 ]] && exit 1
 
 "${BROWSER:-"xdg-open"}" "$link" &>/dev/null
