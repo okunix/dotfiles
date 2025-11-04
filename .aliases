@@ -16,6 +16,8 @@ alias discord="discord --no-sandbox"
 
 alias terraform="tofu"
 
+alias k="kubectl"
+
 alias ff="fastfetch"
 alias nsxiv="nsxiv -s f"
 
