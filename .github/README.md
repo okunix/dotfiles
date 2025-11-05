@@ -8,7 +8,7 @@
 
 ```bash
 # basic packages
-sudo pacman -S zsh alacritty neovim stow brightnessctl alsa-utils fastfetch ly tmux fzf bat sxhkd
+sudo pacman -S zsh alacritty neovim stow brightnessctl alsa-utils fastfetch ly tmux fzf bat sxhkd ttf-jetbrains-mono-nerd
 
 # enable ly login manager
 sudo systemctl enable ly

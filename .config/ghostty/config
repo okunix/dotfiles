@@ -1,7 +1,14 @@
 font-family = JetBrainsMono Nerd Font 
-font-feature = -calt, -liga, -dlig
-font-thicken = true 
+font-feature = -calt,-liga,-dlig
 window-padding-x = 10 
 window-padding-y = 10 
 theme = TokyoNight
 background-opacity = 0.9
+confirm-close-surface = false
+gtk-titlebar = false
+resize-overlay = never
+macos-titlebar-style = hidden
+font-synthetic-style = bold
+cursor-style-blink = false
+bold-color = bright
+font-size = 13
