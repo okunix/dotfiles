@@ -26,5 +26,5 @@ tm() {
 }
 
 kma() {
-	kubectl explain "$@" | vim -M -R -
+	kubectl explain "$@" 2>&1 | vim -M -R -
 }
