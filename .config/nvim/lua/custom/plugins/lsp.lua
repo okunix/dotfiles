@@ -70,6 +70,20 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*/templates/_*.tpl",
+	callback = function()
+		vim.bo.filetype = "helm"
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*/templates/NOTES.txt",
+	callback = function()
+		vim.bo.filetype = "helm"
+	end,
+})
+
 vim.lsp.config("helm_ls", {
 	cmd = { "helm_ls", "serve" },
 	filetypes = { "helm" },
