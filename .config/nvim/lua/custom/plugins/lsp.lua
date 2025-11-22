@@ -63,6 +63,25 @@ vim.lsp.config("terraformls", {
 	filetypes = { "terraform" },
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*/templates/*.yaml",
+	callback = function()
+		vim.bo.filetype = "helm"
+	end,
+})
+
+vim.lsp.config("helm_ls", {
+	cmd = { "helm_ls", "serve" },
+	filetypes = { "helm" },
+	settings = {
+		["helm-ls"] = {
+			yamlls = {
+				path = "yaml-language-server",
+			},
+		},
+	},
+})
+
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
