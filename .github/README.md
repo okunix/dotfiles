@@ -1,4 +1,4 @@
-# My dotfiles
+# dotfiles
 
 ![Desktop](desktop.webp)
 
