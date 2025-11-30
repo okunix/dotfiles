@@ -180,11 +180,11 @@ exec --no-startup-id picom -b
 #
 # colorscheme configuration 
 #
-set_from_resource $back       i3wm.background #1a1b26
+set_from_resource $back       i3wm.background #1a1b26da
 set_from_resource $overlay0   i3wm.overlay0   #202020
 set_from_resource $black      i3wm.black      #414868
 set_from_resource $text       i3wm.text       #c0caf5
-set_from_resource $grey       i3wm.grey       #373B41
+set_from_resource $grey       i3wm.grey       #373b41
 set_from_resource $lightgrey  i3wm.lightgrey  #707880
 set_from_resource $white      i3wm.white      #c0caf5
 set_from_resource $yellow     i3wm.yellow     #faba4a
