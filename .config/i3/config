@@ -13,6 +13,7 @@ exec --no-startup-id /usr/lib/gsd-xsettings
 
 exec --no-startup-id nm-applet
 
+# Notification daemon
 exec --no-startup-id dunst
 
 # Used to adjust volume in PulseAudio.
@@ -142,27 +143,21 @@ bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOUR
 # screenshots software
 bindsym Print exec --no-startup-id flameshot gui
 
-bindsym $mod+Shift+x exec --no-startup-id $HOME/.local/scripts/shutdown.sh
-bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/scripts/reboot.sh
+bindsym $mod+Shift+x exec --no-startup-id $HOME/.local/scripts/shutdown_dmenu
+bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/scripts/reboot_dmenu
 bindsym $mod+Shift+w exec --no-startup-id $HOME/.local/scripts/weather.sh
 bindsym $mod+Shift+b exec --no-startup-id $HOME/.local/scripts/bookmarks
-bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/scripts/i3bar_toggle.sh
+bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/scripts/i3bar_toggle
 
 # mouse acceleration settings
 exec_always --no-startup-id xinput set-prop 10 "libinput Accel Profile Enabled" 0 1 0
 exec_always --no-startup-id xinput --set-prop 10 'libinput Accel Speed' -0.45
 
 # wallpaper software
-exec --no-startup-id nitrogen --restore
-
-# x11 compositor
-# exec --no-startup-id picom -b
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.local/share/bg"
 
 # language toggle
 exec_always --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
-
-# notification daemon
-exec --no-startup-id dunst
 
 # slock display locker
 exec_always --no-startup-id xset dpms 300
@@ -179,7 +174,7 @@ focus_wrapping no
 gaps inner 9
 gaps outer 9
 
-# starting picom compositor
+# X11 compositor
 exec --no-startup-id picom -b
 
 #

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+WALLPAPERS_PATH="$HOME/.local/share/wallpapers"
+WALLPAPER_DEST="$HOME/.local/share/bg"
+
+PROMPT_PROGRAM="dmenu -i -l 15 -p \"Choose wallpaper\""
+if [[ -t 1 && -t 0 ]]; then
+	PROMPT_PROGRAM="gum filter --header \"Choose wallpaper\""
+fi
+
+choice="$(find "$WALLPAPERS_PATH" -maxdepth 1 \
+	-iname '*.png' -o \
+	-iname '*.jpg' -o \
+	-iname '*.jpeg' | sort | sed -E 's/.*\/([^\/]+)$/\1/' |
+	eval "$PROMPT_PROGRAM")"
+
+cp "$WALLPAPERS_PATH/$choice" "$WALLPAPER_DEST"
+
+if command -v hyprpaper &>/dev/null; then
+	pkill hyprpaper
+	nohup hyprpaper &>/dev/null &
+elif command -v feh &>/dev/null; then
+	feh --no-fehbg --bg-fill "$WALLPAPER_DEST"
+fi
