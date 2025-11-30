@@ -13,5 +13,5 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 source $ZSH/oh-my-zsh.sh
-source ~/.aliases
+source $HOME/.aliases
 source <(fzf --zsh)

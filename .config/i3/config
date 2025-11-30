@@ -170,7 +170,7 @@ exec_always --no-startup-id xss-lock -- slock
 
 
 # window specific config
-for_window [title="File Operation Progress"] floating enable
+for_window [window_type="dialog"] floating enable
 
 # disable focus wrapping
 focus_wrapping no
