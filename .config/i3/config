@@ -220,7 +220,7 @@ bar {
         focused_workspace  $back        $back       $white
         active_workspace   $back        $back       $back
         inactive_workspace $back        $back       $lightgrey
-        urgent_workspace   $yellow      $yellow     $back
+        urgent_workspace   $back        $back       $yellow
     }
 }
 
