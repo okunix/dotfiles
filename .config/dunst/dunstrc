@@ -23,8 +23,8 @@
     padding = 20
     horizontal_padding = 13
     text_icon_padding = 0
-    frame_width = 0 
-    frame_color = "#a47de9"
+    frame_width = 2
+    frame_color = "#c0caf5"
     gap_size = 0
     separator_color = frame
     sort = yes
