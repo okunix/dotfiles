@@ -150,8 +150,8 @@ bindsym $mod+Shift+b exec --no-startup-id $HOME/.local/scripts/bookmarks
 bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/scripts/i3bar_toggle
 
 # mouse acceleration settings
-exec_always --no-startup-id xinput set-prop 12 "libinput Accel Profile Enabled" 0 1 0
-exec_always --no-startup-id xinput --set-prop 12 'libinput Accel Speed' -0.2 
+exec_always --no-startup-id xinput set-prop 13 "libinput Accel Profile Enabled" 0 1 0
+exec_always --no-startup-id xinput --set-prop 13 'libinput Accel Speed' -0.2
 
 # wallpaper software
 exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.local/share/bg"
