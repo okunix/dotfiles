@@ -4,7 +4,7 @@ set -o pipefail
 
 PROMPT_PROGRAM="dmenu -i -l 15 -p \"Bookmarks\""
 if [[ -t 1 && -t 0 ]]; then
-	PROMPT_PROGRAM="command fzf --reverse --prompt \"Bookmarks > \""
+	PROMPT_PROGRAM="command fzf --reverse --prompt \"Bookmarks > \" --cycle"
 fi
 
 BOOKMARKS_FILE="$HOME/.local/share/bookmarks"
