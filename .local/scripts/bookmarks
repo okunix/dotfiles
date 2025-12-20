@@ -3,7 +3,7 @@
 set -o pipefail
 
 PROMPT_PROGRAM="dmenu -i -l 15 -p \"Bookmarks\""
-if [[ -t 1 && -t 0 ]]; then
+if [[ -t 1 && -t 0 && "$1" != "dmenu" ]]; then
 	PROMPT_PROGRAM="command fzf --reverse --prompt \"Bookmarks > \" --cycle"
 fi
 

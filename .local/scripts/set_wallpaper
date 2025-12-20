@@ -19,9 +19,9 @@ choice="$(find "$WALLPAPERS_PATH" -maxdepth 1 \
 
 cp "$WALLPAPERS_PATH/$choice" "$WALLPAPER_DEST"
 
-if command -v hyprpaper &>/dev/null; then
+if [[ -x "$(command -v hyprpaper)" ]]; then
 	pkill hyprpaper
 	nohup hyprpaper &>/dev/null &
-elif command -v feh &>/dev/null; then
+elif [[ -x "$(command -v feh)" ]]; then
 	feh --no-fehbg --bg-fill "$WALLPAPER_DEST"
 fi

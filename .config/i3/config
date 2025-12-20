@@ -146,7 +146,7 @@ bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Shift+x exec --no-startup-id $HOME/.local/scripts/shutdown_dmenu
 bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/scripts/reboot_dmenu
 bindsym $mod+Shift+w exec --no-startup-id $HOME/.local/scripts/weather.sh
-bindsym $mod+Shift+b exec --no-startup-id $HOME/.local/scripts/bookmarks
+bindsym $mod+Shift+b exec --no-startup-id $HOME/.local/scripts/bookmarks dmenu
 bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/scripts/i3bar_toggle
 
 # mouse acceleration settings
