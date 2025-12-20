@@ -2,6 +2,11 @@
 
 set -o pipefail
 
+PROMPT_PROGRAM="dmenu -i -l 15 -p \"Bookmarks\""
+if [[ -t 1 && -t 0 ]]; then
+	PROMPT_PROGRAM="command fzf --reverse --prompt \"Bookmarks > \""
+fi
+
 BOOKMARKS_FILE="$HOME/.local/share/bookmarks"
 if [[ "$1" == "edit" ]]; then
 	"${EDITOR:-"vim"}" "$BOOKMARKS_FILE"
@@ -10,7 +15,7 @@ fi
 
 valid_bookmarks=$(grep -oE '^.+\shttps?://\S+\s*$' "$BOOKMARKS_FILE")
 names=$(sed -E 's/\shttps?:\/\/([^\/]+).*$/ (\1)/' <<<"$valid_bookmarks" | sed -E 's/www\.(.+\))$/\1/')
-choice=$(echo "$names" | dmenu -i -l 15 -p "Bookmarks")
+choice=$(echo "$names" | eval "$PROMPT_PROGRAM")
 [[ -z "$choice" ]] && exit
 
 website_name=$(sed -E 's/\s\([^()]+\)$//' <<<"$choice" | sed -E 's/([+?|^$\\().*{}])/\\\1/g')
