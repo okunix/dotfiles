@@ -180,7 +180,7 @@ exec --no-startup-id picom -b
 #
 # colorscheme configuration 
 #
-set_from_resource $back       i3wm.background #1a1b26da
+set_from_resource $back       i3wm.background #1a1b26
 set_from_resource $overlay0   i3wm.overlay0   #202020
 set_from_resource $black      i3wm.black      #414868
 set_from_resource $text       i3wm.text       #c0caf5
@@ -208,7 +208,6 @@ bar {
     position top 
     font pango:JetBrainsMono Nerd Font 10 
 
-    i3bar_command "i3bar --transparency"
     tray_output none
     colors {
         background         $back
