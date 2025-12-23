@@ -9,6 +9,7 @@ echo_branch() {
 }
 setopt PROMPT_SUBST
 PROMPT="%B%F{green}%F{blue}%~ \$(echo_branch)%(?.%F{white}.%F{red}%? )$%f%b "
+RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"
 
 plugins=(git vi-mode)
 
