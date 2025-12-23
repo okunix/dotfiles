@@ -1,5 +1,15 @@
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="refined"
+ZSH_THEME=
+
+echo_branch() {
+    git status &> /dev/null || return
+    branch="$(git branch --show-current)"
+    diff="$(git diff --quiet || echo '*')" 
+    echo "%F{magenta}${diff}${branch:-!DETATCHED}%f "
+}
+setopt PROMPT_SUBST
+PROMPT="%B%F{green}%F{blue}%~ \$(echo_branch)%(?.%F{white}.%F{red}%? )$%f%b "
+
 plugins=(git vi-mode)
 
 VI_MODE_SET_CURSOR=true
