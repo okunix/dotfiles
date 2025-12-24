@@ -4,7 +4,7 @@ ZSH_THEME=
 echo_branch() {
     git status &> /dev/null || return
     branch="$(command git branch --show-current)"
-    diff="$(command git diff --quiet --ignore-submodules HEAD || echo '*')" 
+    diff="$(command git diff --quiet --ignore-submodules HEAD &>/dev/null || echo '*')" 
     echo "%F{magenta}${diff}${branch:-!DETATCHED}%f "
 }
 setopt PROMPT_SUBST
