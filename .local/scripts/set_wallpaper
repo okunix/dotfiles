@@ -19,9 +19,16 @@ choice="$(find "$WALLPAPERS_PATH" -maxdepth 1 \
 
 cp "$WALLPAPERS_PATH/$choice" "$WALLPAPER_DEST"
 
-if [[ -x "$(command -v hyprpaper)" ]]; then
-	pkill hyprpaper
-	nohup hyprpaper &>/dev/null &
-elif [[ -x "$(command -v feh)" ]]; then
-	feh --no-fehbg --bg-fill "$WALLPAPER_DEST"
-fi
+case $XDG_SESSION_TYPE in
+"wayland")
+	if [[ -x "$(command -v hyprpaper)" ]]; then
+		pkill hyprpaper
+		nohup hyprpaper &>/dev/null &
+	fi
+	;;
+"x11")
+	if [[ -x "$(command -v feh)" ]]; then
+		feh --no-fehbg --bg-fill "$WALLPAPER_DEST"
+	fi
+	;;
+esac
