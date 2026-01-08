@@ -28,7 +28,7 @@
     gap_size = 0
     separator_color = frame
     sort = yes
-    font = FiraCode Nerd Font 10
+    font = JetBrainsMono Nerd Font 10
     line_height = 1
     markup = full
     format = "<b>%s</b>\n%b"
@@ -66,19 +66,19 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#000000"
+    background = "#15161e"
     foreground = "#888888"
     timeout = 10
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#000000"
+    background = "#15161e"
     foreground = "#ffffff"
     timeout = 10
     override_pause_level = 30
 
 [urgency_critical]
-    background = "#000000"
+    background = "#15161e"
     foreground = "#ffffff"
     frame_color = "#eb4129"
     timeout = 0
