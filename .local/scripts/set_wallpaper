@@ -21,9 +21,9 @@ cp "$WALLPAPERS_PATH/$choice" "$WALLPAPER_DEST"
 
 case $XDG_SESSION_TYPE in
 "wayland")
-	if [[ -x "$(command -v hyprpaper)" ]]; then
-		pkill hyprpaper
-		nohup hyprpaper &>/dev/null &
+	if [[ -x "$(command -v swaybg)" ]]; then
+		pkill swaybg
+		nohup swaybg -m fill -i "$WALLPAPER_DEST" &>/dev/null &
 	fi
 	;;
 "x11")
