@@ -20,6 +20,7 @@ require("mason-lspconfig").setup({
 		"jinja_lsp",
 		"clangd",
 		"helm_ls",
+		"just",
 	},
 	automatic_enable = {
 		exclude = { "lua_ls", "clangd" },
