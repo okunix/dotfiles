@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+s="$(find "$HOME/Projects" -mindepth 1 -maxdepth 1 -type d | awk -F/ '{print $NF}' | command fzf | tr '.' '_')"
+tmux new -c "$HOME/Projects/$s" -s "$s" || tmux attach -t "$s"

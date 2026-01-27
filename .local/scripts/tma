@@ -3,6 +3,11 @@
 set -o errexit
 set -o pipefail
 
+if [[ -n "$TMUX" ]]; then
+	echo "You are in a tmux session already"
+	exit 1
+fi
+
 sessions_raw="$(tmux ls -F \#S 2>/dev/null || true)"
 if [[ -z "$sessions_raw" ]]; then
 	echo "No active tmux sessions"
