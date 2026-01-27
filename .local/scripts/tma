@@ -4,7 +4,7 @@ set -o errexit
 set -o pipefail
 
 if [[ -n "$TMUX" ]]; then
-	echo "You are in a tmux session already"
+	echo "You are in a tmux session"
 	exit 1
 fi
 
