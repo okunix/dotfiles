@@ -1,105 +1,108 @@
 vim.filetype.add({
-	extension = {
-		tf = "terraform",
-	},
+    extension = {
+        tf = "terraform",
+    },
 })
 
 vim.filetype.add({
-	extension = {
-		j2 = "jinja",
-	},
+    extension = {
+        j2 = "jinja",
+    },
 })
 
 vim.filetype.add({
-	pattern = {
-		[".*/ansible/.*%.ya?ml"] = "yaml.ansible",
-		[".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
-		[".*/roles/.*%.ya?ml"] = "yaml.ansible",
-	},
+    pattern = {
+        [".*/ansible/.*%.ya?ml"] = "yaml.ansible",
+        [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+        [".*/roles/.*%.ya?ml"] = "yaml.ansible",
+    },
 })
 
 vim.filetype.add({
-	filename = {
-		[".gitlab-ci.yml"] = "yaml.gitlab",
-	},
-	pattern = {
-		[".*%.gitlab-ci/.*%.ya?ml"] = "yaml.gitlab",
-	},
+    filename = {
+        [".gitlab-ci.yml"] = "yaml.gitlab",
+    },
+    pattern = {
+        [".*%.gitlab-ci/.*%.ya?ml"] = "yaml.gitlab",
+    },
 })
 
 vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+        },
+    },
 })
 
 vim.lsp.config("yamlls", {
-	cmd = { "yaml-language-server", "--stdio" },
-	settings = {
-		yaml = {
-			schemaStore = {
-				enable = false,
-			},
-			schemas = {
-				["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*.gitlab-ci.yml",
-			},
-		},
-	},
-	filetypes = { "yaml.gitlab" },
+    cmd = { "yaml-language-server", "--stdio" },
+    settings = {
+        yaml = {
+            schemaStore = {
+                enable = false,
+            },
+            schemas = {
+                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*.gitlab-ci.yml",
+            },
+        },
+    },
+    filetypes = { "yaml.gitlab" },
 })
 
 vim.lsp.config("clangd", {
-	cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
-	init_options = {
-		fallbackFlags = { "-std=c++17" },
-	},
+    cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+    init_options = {
+        fallbackFlags = { "-std=c++17" },
+    },
 })
 
 vim.lsp.config("terraformls", {
-	filetypes = { "terraform" },
+    filetypes = { "terraform" },
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*/templates/*.yaml",
-	callback = function()
-		vim.bo.filetype = "helm"
-	end,
+    pattern = "*/templates/*.yaml",
+    callback = function()
+        vim.bo.filetype = "helm"
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*/templates/_*.tpl",
-	callback = function()
-		vim.bo.filetype = "helm"
-	end,
+    pattern = "*/templates/_*.tpl",
+    callback = function()
+        vim.bo.filetype = "helm"
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*/templates/NOTES.txt",
-	callback = function()
-		vim.bo.filetype = "helm"
-	end,
+    pattern = "*/templates/NOTES.txt",
+    callback = function()
+        vim.bo.filetype = "helm"
+    end,
 })
 
 vim.lsp.config("helm_ls", {
-	cmd = { "helm_ls", "serve" },
-	filetypes = { "helm" },
-	settings = {
-		["helm-ls"] = {
-			yamlls = {
-				path = "yaml-language-server",
-			},
-		},
-	},
+    cmd = { "helm_ls", "serve" },
+    filetypes = { "helm" },
+    settings = {
+        ["helm-ls"] = {
+            yamlls = {
+                path = "yaml-language-server",
+            },
+        },
+    },
 })
 
 vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
 })
