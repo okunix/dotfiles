@@ -25,3 +25,5 @@ _darcs
 
 \.github
 \.local/share/bg$
+
+\.editorconfig
