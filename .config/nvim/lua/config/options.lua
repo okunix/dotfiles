@@ -1,6 +1,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -26,14 +29,5 @@ vim.opt.updatetime = 50
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 vim.opt.cmdheight = 1
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python",
-	callback = function()
-		vim.opt_local.indentexpr = ""
-	end,
-})

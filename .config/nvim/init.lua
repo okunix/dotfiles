@@ -1,2 +1,3 @@
-require("config.lazy")
-require("custom")
+require("config")
+require("pkg")
+require("config.colorscheme")
