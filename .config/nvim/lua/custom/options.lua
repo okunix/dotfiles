@@ -36,18 +36,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function() vim.opt_local.indentexpr = '' end,
 })
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
-
-vim.g.have_nerd_font = false
-
-vim.o.number = true
-vim.o.relativenumber = true
-
-vim.o.mouse = 'a'
-
 vim.o.breakindent = true
-
 vim.o.undofile = true
 
 vim.o.ignorecase = true
@@ -62,11 +51,6 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
--- Show which line your cursor is on
 vim.o.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
