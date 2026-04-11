@@ -54,3 +54,5 @@ vim.o.splitbelow = true
 vim.o.inccommand = 'split'
 
 vim.o.cursorline = true
+
+vim.opt.runtimepath:append(vim.fn.expand '~/.local/share/nvim/site')
