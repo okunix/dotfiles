@@ -24,6 +24,7 @@ rtp:prepend(lazypath)
 
 require('lazy').setup({
   { 'NMAC427/guess-indent.nvim', opts = {} },
+  { 'tpope/vim-sensible', lazy = false },
   { -- Fuzzy Finder
     'nvim-telescope/telescope.nvim',
     enabled = true,
