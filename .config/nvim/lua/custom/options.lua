@@ -97,3 +97,13 @@ vim.filetype.add {
     ['values%.yaml'] = 'yaml',
   },
 }
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'yaml', 'yml', 'yml.*', 'yaml.*' },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+})
