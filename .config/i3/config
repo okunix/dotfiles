@@ -1,226 +1,204 @@
-# My i3 config
+# title font
+font pango:JetBrainsMono Nerd Font 9 
 
-# Setting mod key to be Super
+# Variables
 set $mod Mod4
 
-# Font for window titles. 
-font pango:JetBrainsMono Nerd Font 10
+set $left h
+set $down j
+set $up k
+set $right l
 
-# Start XDG autostart .desktop files using dex.
-exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id xrdb -merge $HOME/.Xresources
-exec --no-startup-id /usr/lib/gsd-xsettings 
+set $term $TERMINAL 
+set $browser $BROWSER
+set $menu "dmenu_run -fn 'JetBrainsMono Nerd Font 14px' -nb '#15161e' -nf '#c0caf5' -sf '#c0caf5' -sb '#005577'"
+set $statusbar statusbar 
+set $statusbar_refresh pkill -CONT -f $statusbar
 
-exec --no-startup-id nm-applet
+exec_always --no-startup-id xrdb -merge $HOME/.Xresources
 
-# Notification daemon
-exec --no-startup-id dunst
+exec_always --no-startup-id xinput set-prop "$(xinput list --id-only 'Logitech USB Optical Mouse')" "libinput Accel Profile Enabled" 0 1 0
+exec_always --no-startup-id xinput set-prop "$(xinput list --id-only 'Logitech USB Optical Mouse')" 'libinput Accel Speed' -0.2
 
-# Used to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
 
-floating_modifier $mod
-tiling_drag modifier titlebar
+# Idle configuration
+exec --no-startup-id xset dpms 300
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --no-fork -c 000000
+exec_always --no-startup-id dunst 
+exec_always --no-startup-id picom -b 
+exec_always --no-startup-id xwallpaper --zoom "$HOME/.local/share/bg"
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id $TERMINAL 
+#
+# Window rules
+#
+for_window [window_role="dialog"] floating enable
+for_window [window_role="messagebox"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
 
-# kill focused window
+for_window [window_type="dialog"] floating enable
+for_window [window_type="utility"] floating enable
+for_window [window_type="notification"] floating enable
+for_window [window_type="toolbar"] floating enable
+for_window [window_type="splash"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="(?i)pinentry"] floating enable
+for_window [class="pinentry-qt"] floating enable
+for_window [class="pinentry-gtk-2"] floating enable
+for_window [title="(?i)pinentry"] floating enable
+
+#
+# Essential bindings
+#
+bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
+bindsym $mod+d exec --no-startup-id dmenu_run 
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+b exec $browser
 
-# start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run
+#
+# Moving around
+#
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
-# split in horizontal orientation
-bindsym $mod+c split h
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-# split in vertical orientation
-bindsym $mod+v split v
+#
+# Workspaces
+#
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#
+# Layout bindings
+#
+bindsym $mod+c splith
+bindsym $mod+v splitv
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+bindsym $mod+f fullscreen
+
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-bindsym $mod+semicolon focus child
-
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace
-bindsym $mod+Shift+r restart
-# exit i3
-bindsym $mod+Shift+e exit 
-#exec "i3-nagbar -t warning -m 'Do you want to end your X session?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+a focus child
 
 mode "resize" {
-        bindsym h resize shrink width 10 px
-        bindsym j resize grow height 10 px
-        bindsym k resize shrink height 10 px
-        bindsym l resize grow width 10 px
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-# border width
-default_border pixel 0
-
-# browser
-bindsym $mod+b exec --no-startup-id $BROWSER
-
-# brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+# Media buttons configuration
+bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle && $statusbar_refresh
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume -l 1 @DEFAULT_SINK@ 5%- && $statusbar_refresh
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+ && $statusbar_refresh
+bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%+
+bindsym Print exec --no-startup-id flameshot gui 
 
-# audio
-bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1 && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 0 && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_i3status
-
-# screenshots software
-bindsym Print exec --no-startup-id flameshot gui
-
+# Custom bindings
 bindsym $mod+Shift+x exec --no-startup-id $HOME/.local/scripts/shutdown_dmenu
 bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/scripts/reboot_dmenu
 bindsym $mod+Shift+w exec --no-startup-id $HOME/.local/scripts/weather.sh
 bindsym $mod+Shift+b exec --no-startup-id $HOME/.local/scripts/bookmarks dmenu
-bindsym $mod+Shift+s exec --no-startup-id $HOME/.local/scripts/i3bar_toggle
+bindsym $mod+Shift+s exec --no-startup-id i3-msg bar mode toggle
 
-# mouse acceleration settings
-exec_always --no-startup-id xinput set-prop $(xinput list --id-only 'Logitech USB Optical Mouse') "libinput Accel Profile Enabled" 0 1 0
-exec_always --no-startup-id xinput set-prop $(xinput list --id-only 'Logitech USB Optical Mouse') 'libinput Accel Speed' -0.2
-
-# wallpaper software
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.local/share/bg"
-
-# language toggle
-exec_always --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
-
-# slock display locker
-exec_always --no-startup-id xset dpms 300
-exec_always --no-startup-id xss-lock -- slock
-
-
-# window specific config
-for_window [window_type="dialog"] floating enable
-
-# disable focus wrapping
+default_border pixel 1
 focus_wrapping no
-
-# setting window gaps 
-gaps inner 9
-gaps outer 9
-
-# X11 compositor
-exec --no-startup-id picom -b
+floating_modifier $mod
+workspace_layout tabbed
 
 #
-# colorscheme configuration 
+# Colorscheme configuration
 #
-set_from_resource $back       i3wm.background #1a1b26
-set_from_resource $overlay0   i3wm.overlay0   #202020
-set_from_resource $black      i3wm.black      #414868
-set_from_resource $text       i3wm.text       #c0caf5
-set_from_resource $grey       i3wm.grey       #373b41
-set_from_resource $lightgrey  i3wm.lightgrey  #707880
-set_from_resource $white      i3wm.white      #c0caf5
-set_from_resource $yellow     i3wm.yellow     #faba4a
-set_from_resource $orange     i3wm.orange     #fe640b
-set_from_resource $red        i3wm.red        #ff899d
-set_from_resource $magenta    i3wm.magenta    #c7a9ff
-set_from_resource $green      i3wm.green      #9fe044
-set_from_resource $blue       i3wm.blue       #8db0ff
-set_from_resource $cyan       i3wm.cyan       #a4daff
 
-# target                 title     bg    text   indicator  border
-client.focused           $white    $back $white $white     $white
-client.focused_inactive  $grey     $back $white $grey      $grey
-client.unfocused         $grey     $back $white $grey      $grey
-client.urgent            $red      $back $white $red       $red
-client.placeholder       $grey     $back $white $grey      $grey
-client.background        $back
+set $bg      #15161e
+set $overlay #1a1b26
+set $text    #c0caf5
+set $text_hl #cad5ff
+set $border  #414868
+set $primary #005577
+set $accent  #227799
+set $urgent  #b33b00
 
+client.focused          $accent  $primary $text_hl $accent  $accent
+client.urgent           $urgent  $urgent  $text    $urgent  $urgent
+client.focused_inactive $border  $overlay $text    $border  $border
+client.unfocused        $border  $overlay $text    $border  $border
+client.placeholder      $overlay $bg      $text    $overlay $overlay
+client.background       $bg
+
+# Bar configuration
 bar {
-    status_command i3status
-    position top 
-    font pango:JetBrainsMono Nerd Font 10 
+    position top
 
-    tray_output none
+    status_command $statusbar
+
     colors {
-        background         $back
-        statusline         $white
-        focused_statusline $white
-        focused_separator  $lightgrey
+        background $bg
+        statusline $text
+        separator $border
 
-        # target           border       bg          text
-        focused_workspace  $back        $back       $white
-        active_workspace   $back        $back       $back
-        inactive_workspace $back        $back       $lightgrey
-        urgent_workspace   $back        $back       $yellow
+        focused_workspace  $accent $primary $text_hl
+        inactive_workspace $border $overlay $text
+        active_workspace   $border $border  $text
+        urgent_workspace   $border $urgent  $text
     }
 }
 
-include "$HOME/.config/i3/config.d/*.conf"
+include "$HOME/.config/i3/config.d/*"
