@@ -1,6 +1,7 @@
 theme = "custom"
 
 [editor]
+auto-pairs = false
 line-number = "relative"
 bufferline = "multiple"
 completion-timeout = 5
@@ -91,6 +92,7 @@ k = "move_line_up"
 # selected so that it's just a keystroke away to delete
 [keys.normal.d]
 d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"]
+"$" = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
 t = ["extend_till_char"]
 s = ["surround_delete"]
 i = ["select_textobject_inner"]
