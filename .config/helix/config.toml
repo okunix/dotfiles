@@ -32,8 +32,8 @@ C-k = "expand_selection"
 C-l = "select_next_sibling"
 
 # Personal preference
-o = ["open_below", "normal_mode"]
-O = ["open_above", "normal_mode"]
+o = ["open_below", "insert_mode"]
+O = ["open_above", "insert_mode"]
 
 # Muscle memory
 "{" = ["goto_prev_paragraph", "collapse_selection"]
@@ -119,7 +119,7 @@ g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
-esc = ["collapse_selection", "normal_mode"]
+esc = ["collapse_selection", "normal_mode", "move_char_left"]
 
 [keys.select]
 # Muscle memory
