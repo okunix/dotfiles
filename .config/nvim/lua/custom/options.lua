@@ -107,3 +107,19 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.expandtab = true
   end,
 })
+
+vim.filetype.add {
+  pattern = {
+    ['.*[Mm]akefile.*'] = 'make',
+    ['config.mk'] = 'make',
+  },
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'make',
+  callback = function()
+    vim.bo.expandtab = false
+    vim.bo.shiftwidth = 8
+    vim.bo.tabstop = 8
+  end,
+})
