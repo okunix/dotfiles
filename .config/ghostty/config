@@ -7,8 +7,8 @@ background-opacity = 0.9
 
 window-padding-x = 5
 window-padding-y = 5
-gtk-titlebar = false
-macos-titlebar-style = hidden
+#gtk-titlebar = false
+#macos-titlebar-style = hidden
 
 resize-overlay = never
 confirm-close-surface = false
