@@ -2,3 +2,4 @@
 .config/nvim/plugged/
 .config/nvim/lazy-lock.json
 .fonts/.uuid
+.DS_Store

@@ -27,3 +27,5 @@ _darcs
 \.local/share/bg$
 
 \.editorconfig
+
+\.DS_Store
