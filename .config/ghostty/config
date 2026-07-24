@@ -13,3 +13,5 @@ confirm-close-surface = false
 
 cursor-style-blink = false
 bold-color = bright
+
+working-directory = home

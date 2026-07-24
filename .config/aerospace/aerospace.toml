@@ -12,7 +12,7 @@ start-at-login = false
 
 # Automatically reload the config when the config file is saved
 # After setting this to true, reload once manually to start the auto-reloading
-auto-reload-config = true 
+auto-reload-config = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -21,10 +21,10 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 10
 
 # Possible values: tiles|accordion
-default-root-container-layout = 'accordion'
+default-root-container-layout = 'tiles'
 
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
@@ -54,7 +54,7 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 on-mode-changed = []
 
-focus-follows-mouse.enabled = false 
+focus-follows-mouse.enabled = false
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -68,12 +68,12 @@ key-mapping.preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-gaps.inner.horizontal = 5
-gaps.inner.vertical =   5
-gaps.outer.left =       5
-gaps.outer.bottom =     5
-gaps.outer.top =        5
-gaps.outer.right =      5
+gaps.inner.horizontal = 0
+gaps.inner.vertical =   0
+gaps.outer.left =       0
+gaps.outer.bottom =     0
+gaps.outer.top =        0
+gaps.outer.right =      0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -104,7 +104,7 @@ gaps.outer.right =      5
     # alt-enter = 'exec-and-forget open -a /Applications/Ghostty.app'
     # alt-b = 'exec-and-forget open -a /Applications/Brave Browser.app'
     alt-enter = '''exec-and-forget osascript -e 'tell application "Ghostty" to new window''''
-    alt-b = '''exec-and-forget osascript -e 'tell application "Brave Browser" to new window''''
+    alt-b = '''exec-and-forget osascript -e 'tell application "Brave Browser" to make new window''''
     alt-f = 'fullscreen --no-outer-gaps'
 
     alt-shift-q = 'close'
