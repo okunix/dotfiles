@@ -23,6 +23,18 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup({
+  {
+    'vimwiki/vimwiki',
+    init = function()
+      vim.g.vimwiki_list = {
+        {
+          path = '~/Documents/Notes/',
+          syntax = 'markdown',
+          ext = '.md',
+        },
+      }
+    end,
+  },
   { 'NMAC427/guess-indent.nvim', opts = {} },
   { 'tpope/vim-sensible', lazy = false },
   { -- Fuzzy Finder
