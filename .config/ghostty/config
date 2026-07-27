@@ -15,3 +15,6 @@ cursor-style-blink = false
 bold-color = bright
 
 working-directory = home
+
+keybind = super+n=next_tab
+keybind = super+p=previous_tab
