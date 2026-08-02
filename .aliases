@@ -16,7 +16,7 @@ alias https="https --style=pie-dark"
 
 alias discord="discord --no-sandbox"
 
-alias terraform="tofu"
+#alias terraform="tofu"
 
 alias k="kubectl"
 
