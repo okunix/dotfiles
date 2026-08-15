@@ -11,7 +11,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/scripts"
 
 # go install binaries
-export PATH="$PATH:$HOME/.go/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 NEOVIM_MASON_BIN="$HOME/.local/share/nvim/mason/bin"
 if [ -d "$NEOVIM_MASON_BIN" ]; then
