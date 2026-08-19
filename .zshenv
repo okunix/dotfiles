@@ -1,3 +1,7 @@
+if [[ -f "$HOME/.zsh_extra" ]]; then
+    source "$HOME/.zsh_extra"
+fi
+
 export BROWSER=brave
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
