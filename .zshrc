@@ -26,3 +26,7 @@ bindkey -v '^?' backward-delete-char
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 source <(fzf --zsh)
+
+if [[ -f "$HOME/.zsh_after" ]]; then
+    source "$HOME/.zsh_after"
+fi

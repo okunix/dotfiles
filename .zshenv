@@ -1,5 +1,5 @@
-if [[ -f "$HOME/.zsh_extra" ]]; then
-    source "$HOME/.zsh_extra"
+if [[ -f "$HOME/.zsh_before" ]]; then
+    source "$HOME/.zsh_before"
 fi
 
 export BROWSER=brave
