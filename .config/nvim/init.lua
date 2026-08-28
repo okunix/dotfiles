@@ -159,6 +159,9 @@ require('lazy').setup({
         cssls = {},
         eslint = {},
         sqlls = {},
+        buf = {},
+        swiftformat = {},
+        swiftlint = {},
 
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
