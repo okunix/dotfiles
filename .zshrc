@@ -11,7 +11,7 @@ setopt PROMPT_SUBST
 PROMPT="%B%F{green}%F{blue}%~ \$(echo_branch)%(?.%F{white}.%F{red}%? )$%f%b "
 RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"
 
-plugins=(git vi-mode)
+plugins=(git vi-mode docker docker-compose kubectl opentofu terraform)
 
 VI_MODE_SET_CURSOR=true
 export KEYTIMEOUT=1
