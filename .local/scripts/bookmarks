@@ -2,6 +2,12 @@
 
 set -o pipefail
 
+opencmd="${BROWSER:-"xdg-open"}"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+	opencmd=open
+fi
+
 PROMPT_PROGRAM="command fzf --reverse --prompt \"Bookmarks > \" --cycle"
 if [[ "$1" == "dmenu" ]]; then
 	PROMPT_PROGRAM="dmenu -i -l 15 -p \"Bookmarks\""
@@ -14,16 +20,16 @@ if [[ "$1" == "edit" ]]; then
 fi
 
 while true; do
-	valid_bookmarks=$(grep -oE '^.+\shttps?://\S+\s*$' "$BOOKMARKS_FILE")
-	names=$(sed -E 's/\shttps?:\/\/([^\/]+).*$/ (\1)/' <<<"$valid_bookmarks" | sed -E 's/www\.(.+\))$/\1/')
+	valid_bookmarks=$(grep -oE '^.+[[:space:]]https?://[^[:space:]]+[[:space:]]*$' "$BOOKMARKS_FILE")
+	names=$(sed -E 's/[[:space:]]https?:\/\/([^\/]+).*$/ (\1)/' <<<"$valid_bookmarks" | sed -E 's/www\.(.+\))$/\1/')
 	choice=$(echo "$names" | eval "$PROMPT_PROGRAM")
 	[[ -z "$choice" ]] && exit
 
-	website_name=$(sed -E 's/\s\([^()]+\)$//' <<<"$choice" | sed -E 's/([+?|^$\\().*{}])/\\\1/g')
-	link=$(grep -E "^$website_name\shttps?://\S+\s*$" "$BOOKMARKS_FILE" | head -1 | sed -E -e 's/^\s+|\s+$//' -e 's/.+\s(\S+)$/\1/')
+	website_name=$(sed -E 's/[[:space:]]\([^()]+\)$//' <<<"$choice" | sed -E 's/([+?|^$\\().*{}])/\\\1/g')
+	link=$(grep -E "^$website_name[[:space:]]https?://[^[:space:]]+[[:space:]]*$" "$BOOKMARKS_FILE" | head -1 | sed -E -e 's/^[[:space:]]+|[[:space:]]+$//' -e 's/.+[[:space:]]([^[:space:]]+)$/\1/')
 	[[ $? -eq 1 ]] && exit 1
 
-	"${BROWSER:-"xdg-open"}" "$link" &>/dev/null &
+	$opencmd "$link" &>/dev/null &
 	disown
-	[[ "$1" == "dmenu" ]] && break
+	[[ "$1" == "dmenu" || "$1" == "exit" ]] && break
 done
