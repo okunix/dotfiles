@@ -13,6 +13,11 @@ if [[ -z "$sessions_raw" ]]; then
 	echo "No active tmux sessions"
 	exit 1
 fi
-IFS=$'\n' mapfile -t sessions <<<"$sessions_raw"
-session="$(gum choose --header "Choose what tmux session attach to" "${sessions[@]}")"
+
+# sessions=()
+# while read -r line; do
+# 	sessions+=("$line")
+# done <<< "$sessions_raw"
+
+session="$(IFS=$'\n'; gum choose --header "Choose what tmux session attach to" $sessions_raw)"
 tmux attach -t "$session"
