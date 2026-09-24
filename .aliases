@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 alias vim="nvim"
 alias vi="vim"
@@ -32,4 +32,18 @@ tm() {
 
 kma() {
 	kubectl explain "$@" 2>&1 | vim -M -R -
+}
+
+lookupcert() {
+    local res
+    while [[ $# -gt 0 ]]; do
+        res+="File: $1"
+        res+=$'\n-----\n'
+        res+="$(openssl x509 -in "$1" -text -noout)"
+        if [[ $# -gt 1 ]]; then
+            res+=$'\n\n'
+        fi
+        shift
+    done
+    less <<< "$res"
 }
