@@ -9,13 +9,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export TERMINAL=alacritty
 
 # ~/.local/bin directory
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # ~/.local/scripts directory
-export PATH="$PATH:$HOME/.local/scripts"
+export PATH="$HOME/.local/scripts:$PATH"
 
 # go install binaries
-export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$(go env GOPATH)/bin:$PATH"
 
 NEOVIM_MASON_BIN="$HOME/.local/share/nvim/mason/bin"
 if [ -d "$NEOVIM_MASON_BIN" ]; then
