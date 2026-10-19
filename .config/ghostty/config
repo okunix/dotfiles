@@ -19,3 +19,5 @@ window-inherit-working-directory = false
 
 keybind = super+n=next_tab
 keybind = super+p=previous_tab
+keybind = ctrl+shift+j=scroll_page_lines:1
+keybind = ctrl+shift+k=scroll_page_lines:-1
