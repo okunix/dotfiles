@@ -28,7 +28,7 @@ case $XDG_SESSION_TYPE in
 	;;
 "x11")
 	if [[ -x "$(command -v feh)" ]]; then
-		feh --no-fehbg --bg-fill "$WALLPAPER_DEST"
+		xwallpaper --zoom "$WALLPAPER_DEST"
 	fi
 	;;
 esac
