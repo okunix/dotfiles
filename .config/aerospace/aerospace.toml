@@ -110,7 +110,7 @@ gaps.outer.right =      0
     alt-shift-q = 'close'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-    alt-w = 'layout tiles horizontal vertical'
+    alt-e = 'layout tiles horizontal vertical'
     alt-t = 'layout accordion horizontal vertical'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
